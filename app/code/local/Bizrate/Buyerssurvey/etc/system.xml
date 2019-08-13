@@ -1,0 +1,137 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+        <buyerssurvey translate="label" module="buyerssurvey">
+            <label>Bizrate</label>
+            <sort_order>300</sort_order>
+        </buyerssurvey>
+    </tabs>
+	<sections>
+		<buyerssurvey translate="label" module="buyerssurvey">
+			<label>Bizrate Buyers Survey</label>
+			<tab>buyerssurvey</tab>
+			<frontend_type>text</frontend_type>
+			<sort_order>99999</sort_order>
+			<show_in_default>1</show_in_default>
+			<show_in_website>1</show_in_website>
+			<show_in_store>1</show_in_store>
+			<groups>
+				<buyerssurvey>
+					<label>Bizrate Survey</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>60</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<fields>
+						<enabled translate="label comment" module="buyerssurvey">
+							<label>Enable Bizrate Survey</label>
+							<comment>Enable the Bizrate POS survey on the checkout success page.</comment>
+							<frontend_type>select</frontend_type>
+							<sort_order>20</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+							<source_model>adminhtml/system_config_source_yesno</source_model>
+						</enabled>
+						<mid translate="label comment" module="buyerssurvey">
+							<label>Shopzilla / Bizrate Merchant ID</label>
+							<comment>Enter your Shopzilla / Bizrate Merchant ID.</comment>
+							<frontend_type>text</frontend_type>
+							<sort_order>21</sort_order>
+							<show_in_default>1</show_in_default>
+							<show_in_website>1</show_in_website>
+							<show_in_store>1</show_in_store>
+						</mid>
+                        <bizrate_signup translate="button_label comment">
+                            <label></label>
+                            <button_label>Create a Shopzilla / Bizrate Account</button_label>
+                            <comment>If you do not have a Shopzilla / Bizrate Merchant ID, then click to sign-up.</comment>
+                            <frontend_model>buyerssurvey/system_config_source_signup</frontend_model>
+                            <sort_order>23</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <depends><mid></mid></depends>
+                        </bizrate_signup>
+
+                        <medal_position translate="label comment" module="buyerssurvey">
+                            <label>Bizrate Medal Placement</label>
+                            <comment>Select a placement for the Bizrate medal on your site.</comment>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>36</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                            <source_model>buyerssurvey/system_config_source_position</source_model>
+                        </medal_position>
+
+                         <enable_medal translate="label" module="buyerssurvey">
+                            <label>Enable Bizrate Medal</label>
+                             <frontend_type>select</frontend_type>
+                             <sort_order>38</sort_order>
+                             <show_in_default>1</show_in_default>
+                             <show_in_website>1</show_in_website>
+                             <show_in_store>1</show_in_store>
+                             <source_model>buyerssurvey/system_config_source_bizratemedal</source_model>
+                        </enable_medal>
+                        <!--   <product_gtin_field translate="label comment" module="buyerssurvey">
+                             <label>GTIN field</label>
+                             <comment>Select the attribute that represents your EAN, UPC, or ISBN (*defaults to SKU)</comment>
+                             <frontend_type>select</frontend_type>
+                             <sort_order>50</sort_order>
+                             <show_in_default>1</show_in_default>
+                             <show_in_website>1</show_in_website>
+                             <show_in_store>1</show_in_store>
+                             <source_model>buyerssurvey/system_config_source_productattributes</source_model>
+                         </product_gtin_field>
+
+                                                 <advanced_options translate="label comment" module="buyerssurvey">
+                                                     <label>Advanced options?</label>
+                                                     <comment>Show advanced options?</comment>
+                                                     <frontend_type>select</frontend_type>
+                                                     <sort_order>55</sort_order>
+                                                     <show_in_default>1</show_in_default>
+                                                     <show_in_website>1</show_in_website>
+                                                     <show_in_store>1</show_in_store>
+                                                     <source_model>adminhtml/system_config_source_yesno</source_model>
+                                                 </advanced_options>
+
+                                                 <small_medal_html translate="label comment" module="buyerssurvey">
+                                                     <label>Bizrate Small Medal</label>
+                                                     <comment>HTML for the small Bizrate Medal - The values __MID__ and __STORENAME__ will be replaced with your merchant ID as well as your Store Name</comment>
+                                                     <frontend_type>textarea</frontend_type>
+                                                     <sort_order>70</sort_order>
+                                                     <show_in_default>1</show_in_default>
+                                                     <show_in_website>1</show_in_website>
+                                                     <show_in_store>1</show_in_store>
+                                                     <depends><advanced_options>1</advanced_options></depends>
+                                                 </small_medal_html>
+                                                 <large_medal_html translate="label comment" module="buyerssurvey">
+                                                     <label>Bizrate Large Medal</label>
+                                                     <comment>HTML for the Large Bizrate Medal - The values __MID__ and __STORENAME__ will be replaced with your merchant ID as well as your Store Name</comment>
+                                                     <frontend_type>textarea</frontend_type>
+                                                     <sort_order>75</sort_order>
+                                                     <show_in_default>1</show_in_default>
+                                                     <show_in_website>1</show_in_website>
+                                                     <show_in_store>1</show_in_store>
+                                                     <depends><advanced_options>1</advanced_options></depends>
+                                                 </large_medal_html>
+   -->
+
+                        <heading_help translate="label">
+                            <label>If you have questions or need assistance, then contact us </label>
+
+                            <frontend_model>buyerssurvey/system_config_source_help</frontend_model>
+                            <sort_order>1000</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                        </heading_help>
+
+
+                    </fields>
+				</buyerssurvey>
+			</groups>
+		</buyerssurvey>
+	</sections>
+</config>

@@ -1,0 +1,16 @@
+{
+    "name": "OpenMageModuleFostering/Bizrate_Buyerssurvey",
+    "type": "magento-module",
+    "license": "OSL",
+    "homepage": "",
+    "description": "Bizrate Buyers Survey & Medal Code.",
+    "authors": [
+    {
+        "name": "Bizrate.com",
+        "email": "bizrateinsights@bizrate.com"
+    }
+],
+    "suggest": {
+        "magento-hackathon/magento-composer-installer": "*"
+    }
+}

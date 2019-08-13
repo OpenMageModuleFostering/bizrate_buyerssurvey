@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Bizrate
+ * @package    Bizrate_Buyerssurvey
+ * @author     ModuleCreator
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Bizrate_Buyerssurvey>
+            <active>true</active>
+            <codePool>local</codePool>
+        </Bizrate_Buyerssurvey>
+    </modules>
+</config> 

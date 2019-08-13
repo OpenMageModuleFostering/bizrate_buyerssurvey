@@ -1,0 +1,10 @@
+<!-- Start Bizrate POS Code -->
+<script language="JavaScript">
+    var orderId='<?php echo $this->getOrder()->getIncrementId(); ?>';
+    var cartTotal='<?php echo $this->getOrderTotal(); ?>';
+    var billingZipCode='<?php echo $this->getBillingPostal(); ?>';
+    var productsPurchased= '<?php echo $this->getProductsPurchased(); ?>';
+</script>
+<script type="text/javascript" src="//eval.bizrate.com/js/pos_<?php echo $this->getMid(); ?>.js">
+</script>
+<!-- End Bizrate POS Code -->

@@ -1,0 +1,126 @@
+<?xml version="1.0"?>
+<!-- 
+/**
+ * @category   Bizrate
+ * @package    Bizrate_Buyerssurvey
+ * @author     Collinsharper.com
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+ -->
+<config>
+    <modules>
+        <Bizrate_Buyerssurvey>
+            <version>0.2.0</version>
+        </Bizrate_Buyerssurvey>
+    </modules>
+    <frontend>
+        <layout>
+            <updates>
+                <buyerssurvey>
+                    <file>buyerssurvey.xml</file>
+                </buyerssurvey>
+            </updates>
+        </layout>
+        <translate>
+            <modules>
+                <Bizrate_Buyerssurvey>
+                    <files>
+                        <default>Bizrate_Buyerssurvey.csv</default>
+                    </files>
+                </Bizrate_Buyerssurvey>
+            </modules>
+        </translate>
+        <events>
+            <checkout_onepage_controller_success_action>
+                <observers>
+                    <bizrate_order_success>
+                        <class>buyerssurvey/observer</class>
+                        <method>_order_success_page</method>
+                    </bizrate_order_success>
+                </observers>
+            </checkout_onepage_controller_success_action>
+            <checkout_multishipping_controller_success_action>
+                <observers>
+                    <bizrate_order_success>
+                        <class>buyerssurvey/observer</class>
+                        <method>_order_success_page</method>
+                    </bizrate_order_success>
+                </observers>
+            </checkout_multishipping_controller_success_action>
+        </events>
+    </frontend>
+    <global>
+        <models>
+            <buyerssurvey>
+                <class>Bizrate_Buyerssurvey_Model</class>
+            </buyerssurvey>
+        </models>
+        <blocks>
+            <buyerssurvey>
+                <class>Bizrate_Buyerssurvey_Block</class>
+            </buyerssurvey>
+        </blocks>
+        <helpers>
+            <buyerssurvey>
+                <class>Bizrate_Buyerssurvey_Helper</class>
+            </buyerssurvey>
+        </helpers>
+        <events>
+            <admin_system_config_changed_section_buyerssurvey>
+                <observers>
+                    <bizrate_config_change>
+                        <type>singleton</type>
+                        <class>Bizrate_Buyerssurvey_Model_Observer</class>
+                        <method>updateConfig</method>
+                    </bizrate_config_change>
+                </observers>
+            </admin_system_config_changed_section_buyerssurvey>
+        </events>
+    </global>
+    <adminhtml>
+        <acl>
+            <resources>
+                <all>
+                    <title>Allow Everything</title>
+                </all>
+                <admin>
+                    <children>
+                        <system>
+                            <children>
+                                <config>
+                                    <children>
+                                        <buyerssurvey translate="title" module="buyerssurvey">
+                                            <title>Bizrate Module</title>
+                                            <sort_order>50</sort_order>
+                                        </buyerssurvey>
+                                    </children>
+                                </config>
+                            </children>
+                        </system>
+                    </children>
+                </admin>
+            </resources>
+        </acl>
+    </adminhtml>
+    <default>
+        <buyerssurvey>
+            <buyerssurvey>
+                <enabled>1</enabled>
+                <mid></mid>
+                <enable_medal>large</enable_medal>
+                <medal_position>footer</medal_position>
+                <product_gtin_field>sku</product_gtin_field>
+                <medal_footer>0</medal_footer>
+                <medal_left>0</medal_left>
+                <medal_sidebar>0</medal_sidebar>
+                <advanced_options>0</advanced_options>
+                <small_medal_html><![CDATA[<!-- BEGIN: Bizrate Medal (112x37 pixels) --> <script type="text/javascript">var bizrate={small:"true"};</script> <script src="//medals.bizrate.com/medals/js/__MID___medal.js" type="text/javascript"></script> <a class="br-button"> <img src="//medals.bizrate.com/medals/dynamic/small/__MID___medal.gif" width="112" height="37" border="0" usemap="#__MID___medal" alt="See __STORENAME__ Reviews at Bizrate.com"/> <map name="__MID___medal"> <area shape="poly" coords="1,0,1,36,61,36,61,20,111,20,111,0" href="//www.bizrate.com/ratings_guide/merchant_detail__mid--__MID__.html?rf=sur" title="See __STORENAME__ Reviews at Bizrate.com" target="_blank"/> <area shape="rect" coords="62,21,111,36" href="//www.bizrate.com/?rf=sur" title="Bizrate" target="_blank"/> </map> </a>
+                    <!-- END: Bizrate Medal (112x37 pixels) -->]]></small_medal_html>
+                <large_medal_html><![CDATA[<!-- BEGIN: Bizrate Medal (125x73 pixels) -->
+                    <script src="//medals.bizrate.com/medals/js/__MID___medal.js" type="text/javascript"></script>
+                    <a class="br-button"> <img src="//medals.bizrate.com/medals/dynamic/__MID___medal.gif" width="125" height="73" border="0" usemap="#__MID___medal" alt="See __STORENAME__ Reviews at Bizrate.com"/> <map name="__MID___medal"> <area shape="poly" coords="1,0,1,72,67,72,67,49,124,49,124,0" href="//www.bizrate.com/ratings_guide/merchant_detail__mid--__MID__.html?rf=sur" title="See __STORENAME__ Reviews at Bizrate.com" target="_blank"/> <area shape="rect" coords="68,50,124,72" href="//www.bizrate.com/?rf=sur" title="Bizrate" target="_blank"/> </map> </a>
+                    <!-- END: Bizrate Medal (125x73 pixels) -->]]></large_medal_html>
+            </buyerssurvey>
+        </buyerssurvey>
+    </default>
+</config>

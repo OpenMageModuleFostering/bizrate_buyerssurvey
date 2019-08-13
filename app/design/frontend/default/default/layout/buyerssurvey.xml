@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+
+        <reference name="after_body_start">
+            <block type="buyerssurvey/buyerssurvey" name="buyerssurvey" template="buyerssurvey/buyerssurvey.phtml" />
+        </reference>
+
+        <reference name="footer">
+            <block type="buyerssurvey/footer" after="-" name="bizrate.footer" ifconfig="buyerssurvey/buyerssurvey/medal_footer" template="buyerssurvey/footer.phtml"/>
+        </reference>
+
+        <reference name="right">
+            <block type="buyerssurvey/sidebar" after="-" name="bizrate.sidebar" ifconfig="buyerssurvey/buyerssurvey/medal_sidebar" template="buyerssurvey/sidebar.phtml"/>
+        </reference>
+
+        <reference name="left">
+            <block type="buyerssurvey/leftsidebar" after="-" name="bizrate.sidebarleft" ifconfig="buyerssurvey/buyerssurvey/medal_sidebar" template="buyerssurvey/sidebar.phtml"/>
+        </reference>
+
+    </default>
+</layout>
