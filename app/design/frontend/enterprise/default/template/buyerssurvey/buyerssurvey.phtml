@@ -1,10 +1,26 @@
-<!-- Start Bizrate POS Code -->
-<script language="JavaScript">
-    var orderId='<?php echo $this->getOrder()->getIncrementId(); ?>';
-    var cartTotal='<?php echo $this->getOrderTotal(); ?>';
-    var billingZipCode='<?php echo $this->getBillingPostal(); ?>';
-    var productsPurchased= '<?php echo $this->getProductsPurchased(); ?>';
-</script>
-<script type="text/javascript" src="//eval.bizrate.com/js/pos_<?php echo $this->getMid(); ?>.js">
-</script>
-<!-- End Bizrate POS Code -->
+<?php //mage::log(__FILE__ . __LINE__ ); ?>
+<?php 
+	$good = true;
+	try {
+		$orderId = Mage::getSingleton('checkout/session')->getLastRealOrderId();
+		$cartTotal = $this->getOrderTotal();
+		$billingZipCode = $this->getBillingPostal();
+		$productsPurchased = $this->getProductsPurchased();
+	}
+	catch(Exception $e){
+		$good = false;
+	}
+	?>
+
+	<?php if ($good): ?>
+	<!-- Start Bizrate POS Code -->
+	<script language="JavaScript">
+		var orderId='<?php echo $orderId; ?>';
+		var cartTotal='<?php echo $cartTotal; ?>';
+		var billingZipCode='<?php echo $billingZipCode; ?>';
+		var productsPurchased= '<?php echo $productsPurchased; ?>';
+	</script>
+	<script type="text/javascript" src="//eval.bizrate.com/js/pos_<?php echo $this->getMid(); ?>.js">
+	</script>
+	<!-- End Bizrate POS Code -->
+	<?php endif;?>

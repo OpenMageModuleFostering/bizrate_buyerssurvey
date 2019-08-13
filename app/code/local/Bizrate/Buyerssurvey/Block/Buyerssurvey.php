@@ -3,9 +3,20 @@ class Bizrate_Buyerssurvey_Block_Buyerssurvey extends Mage_Core_Block_Template
 {
 	public function _prepareLayout()
     {
+        //mage::log(__METHOD__ . __LINE__);
 		return parent::_prepareLayout();
     }
-    
+
+    protected function _construct()
+    {
+        //$this->setTemplate('buyerssurvey/buyerssurvey.phtml');
+        //mage::log(__METHOD__ . __LINE__);
+        parent::_construct();
+        //mage::log(__METHOD__ . __LINE__ . " TMPL " . $this->getTemplate());
+    }
+
+
+
 //     public function getBuyerssurvey()
 //     {
 //        if (!$this->hasData('buyerssurvey')) {
@@ -104,11 +115,41 @@ class Bizrate_Buyerssurvey_Block_Buyerssurvey extends Mage_Core_Block_Template
             {
                 break;
             }
+            $par = false;
+            //mage::log("item->getSku():" . $item->getSku());
+            //mage::log("item->getId():" . $item->getId());
+            //mage::log("item->getProductId():" . $item->getProductId());
 
+			//circumventing the SKU issue
+			$product = Mage::getModel('catalog/product')->load($item->getProductId());
+			
+			/*
+            $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku()); 
+            $px = (array)$product; 
+            if (empty($px)) {
+            	$product = Mage::getModel('catalog/product')->load($item->getProductId());
+            }
+            */
+
+            $par = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($product->getId());
+            //adding conf product related code
+            if ((!$par) || ($par == "")) {
+	            $gtin = $this->_outPutCleanedText($product->getData($this->getGtinField()));
+	            $price = number_format($item->getBasePrice(),2);
+	            $sku = $this->_outPutCleanedText($product->getSku());	
+            } else {
+            	$par = Mage::getModel('catalog/product_type_configurable')->getParentIdsByChild($product->getId());
+            	$product = Mage::getModel('catalog/product')->load($par[0]);
+	            $gtin = $this->_outPutCleanedText($product->getData($this->getGtinField()));
+	            $price = number_format($item->getBasePrice(),2);
+	            $sku = $this->_outPutCleanedText($product->getSku());
+            }
+/* old
             $product = Mage::getModel('catalog/product')->loadByAttribute('sku', $item->getSku());
             $gtin = $this->_outPutCleanedText($product->getData($this->getGtinField()));
             $price = number_format($item->getBasePrice(),2);
             $sku = $this->_outPutCleanedText($item->getSku());
+*/
 
             if(!$gtin)
             {
@@ -135,17 +176,19 @@ class Bizrate_Buyerssurvey_Block_Buyerssurvey extends Mage_Core_Block_Template
 
     protected function _toHtml()
     {
-
+//        mage::log(__METHOD__ . __LINE__);
         if(!strstr(mage::helper('core/url')->getCurrentUrl(), 'checkout/onepage/success'))
         {
+//            mage::log(__METHOD__ . __LINE__);
             return '';
         }
 
         if (!Mage::getStoreConfig('buyerssurvey/buyerssurvey/enabled') || !Mage::getStoreConfig('buyerssurvey/buyerssurvey/mid'))
         {
+//            mage::log(__METHOD__ . __LINE__);
             return '';
         }
-
+//        mage::log(__METHOD__ . __LINE__);
         return parent::_toHtml();
     }
 

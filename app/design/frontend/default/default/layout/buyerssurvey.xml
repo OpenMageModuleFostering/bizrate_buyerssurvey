@@ -5,7 +5,6 @@
         <reference name="after_body_start">
             <block type="buyerssurvey/buyerssurvey" name="buyerssurvey" template="buyerssurvey/buyerssurvey.phtml" />
         </reference>
-
         <reference name="footer">
             <block type="buyerssurvey/footer" after="-" name="bizrate.footer" ifconfig="buyerssurvey/buyerssurvey/medal_footer" template="buyerssurvey/footer.phtml"/>
         </reference>

@@ -10,7 +10,7 @@
 <config>
     <modules>
         <Bizrate_Buyerssurvey>
-            <version>0.2.0</version>
+            <version>0.2.4</version>
         </Bizrate_Buyerssurvey>
     </modules>
     <frontend>

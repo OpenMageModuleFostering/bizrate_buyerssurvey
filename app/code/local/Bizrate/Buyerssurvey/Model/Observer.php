@@ -5,12 +5,16 @@ class Bizrate_Buyerssurvey_Model_Observer extends Mage_Core_Block_Template
 
     public function _order_success_page($observer)
     {
+        //mage::log(__METHOD__ . __LINE__);
         $orderIds = $observer->getEvent()->getOrderIds();
         if (empty($orderIds) || !is_array($orderIds)) {
+            //mage::log(__METHOD__ . __LINE__ . "-------- no order ids");
             return;
         }
+        //mage::log(__METHOD__ . __LINE__ . "====================");
         $block = Mage::app()->getFrontController()->getAction()->getLayout()->getBlock('buyerssurvey');
         if ($block) {
+            //mage::log(__METHOD__ . __LINE__ . get_class($block));
             $block->setOrderIds($orderIds);
         }
     }
